@@ -1,0 +1,682 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-size: auto;
+  background: url(../public/ATESIM_Main_Background.png) no-repeat center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.App {
+  gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+  height: 3em;
+  background: rgb(2, 2, 2);
+  font-size: 33px;
+  font-weight: bold;
+}
+.baslik {
+  background: rgb(2, 2, 2);
+  font-family: "Lora", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dateTimecloseButton {
+  width: 7em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.closeBtn {
+  background: none;
+  cursor: pointer;
+  border: none;
+}
+.dateTime {
+  font-family: "Chivo Mono", monospace;
+  padding-right: 1em;
+  gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: large;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid rgb(255, 255, 255);
+  width: 98vw;
+  height: 50px;
+}
+.tabs > h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+.tabs > h1:nth-child(2) {
+  border-left: 3px solid rgb(255, 255, 255);
+}
+.tabs > h1:nth-child(3) {
+  border-left: 3px solid rgb(255, 255, 255);
+  border-right: 3px solid rgb(255, 255, 255);
+}
+
+.activeTab {
+  color: white;
+  font-size: xx-large;
+  background: linear-gradient(to bottom, rgb(122, 122, 122), rgb(51, 51, 51));
+}
+
+.tab {
+  font-size: 16px;
+  background-color: rgba(59, 59, 59, 0.322);
+  color: rgba(150, 149, 149, 0.788);
+}
+.table {
+  table-layout: fixed;
+  display: none;
+}
+.table_active {
+  table-layout: fixed;
+  width: 98vw;
+  height: 45vh;
+  overflow: hidden;
+  border-collapse: collapse;
+  color: aliceblue;
+}
+
+.tableContainer {
+  width: 100vw;
+  height: 57.3vh;
+  gap: 1em;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(90, 90, 90, 0.774);
+}
+
+th,
+td {
+  white-space: pre-wrap;
+  height: 3rem;
+  border: 2.5px solid rgb(218, 218, 228);
+  text-align: center;
+}
+
+#tab1 th,
+#tab2 th,
+#tab3 th {
+  border-right: 4px solid rgb(218, 218, 228);
+  border-top: 4px solid rgb(218, 218, 228);
+  border-left: 4px solid rgb(218, 218, 228);
+}
+
+#tab1 td:nth-child(3),
+#tab1 td:nth-child(6),
+#tab1 td:nth-child(9),
+#tab1 td:nth-child(12),
+#tab1 td:nth-child(15),
+#tab1 td:nth-child(18),
+#tab2 td:nth-child(4),
+#tab2 td:nth-child(8),
+#tab2 td:nth-child(12),
+#tab2 td:nth-child(16),
+#tab2 td:nth-child(20),
+#tab2 td:nth-child(24),
+#tab3 td:nth-child(4),
+#tab3 td:nth-child(7),
+#tab3 td:nth-child(10) {
+  border-right: 4px solid rgb(218, 218, 228);
+}
+#tab1 tr:nth-child(1),
+#tab1 tr:nth-child(2),
+#tab1 tr:nth-child(3),
+#tab1 tr:nth-child(4),
+#tab1 tr:nth-child(5),
+#tab2 tr:nth-child(1),
+#tab2 tr:nth-child(2),
+#tab2 tr:nth-child(3),
+#tab2 tr:nth-child(4),
+#tab2 tr:nth-child(5),
+#tab2 tr:nth-child(6),
+#tab2 tr:nth-child(7),
+#tab2 tr:nth-child(8),
+#tab3 tr:nth-child(1),
+#tab3 tr:nth-child(2) {
+  border-left: 4px solid rgb(218, 218, 228);
+}
+#tab1 tr:last-child,
+#tab2 tr:last-child,
+#tab3 tr:last-child {
+  border-bottom: 4px solid rgb(218, 218, 228);
+}
+
+tr:nth-child(8) > td,
+tr:nth-child(7) > td {
+  border-top: 0px;
+}
+
+tr:nth-child(6) > td,
+tr:nth-child(7) > td {
+  border-bottom: 0px;
+}
+
+.gridContainer {
+  padding-left: 0.51em;
+  padding-right: 0.51em;
+  width: 100%;
+  height: 22.66em;
+  /* For desktop App  height: 22.25em;*/
+  background: rgb(15, 15, 15);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.gridContainerTab4 {
+  padding-left: 0.51em;
+  padding-right: 2em;
+  width: 100%;
+  height: 22.66em;
+  /* For desktop App  height: 22.25em;*/
+  background: rgb(15, 15, 15);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.buttonsTab4 {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+  border: 3px solid white;
+}
+.textTab4 {
+  border: 3px solid white;
+  color: aliceblue;
+  height: 95%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-wrap;
+  text-align: center;
+}
+.gridButtons {
+  border: none;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  width: 18.5em;
+  white-space: pre-wrap;
+  height: 80px;
+  border-radius: 10px;
+  font-family: "Lora", serif;
+  font-size: 16px;
+  color: whitesmoke;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    rgb(102, 97, 97) 25px,
+    rgb(41, 42, 44) 20px
+  );
+}
+
+.gridButtons:hover {
+  background: linear-gradient(
+    to right,
+    rgb(221, 27, 27) 25px,
+    rgb(41, 42, 44) 20px
+  );
+}
+.gridButtonsTab3 {
+  border: none;
+  font-family: "Lora", serif;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+  cursor: pointer;
+  width: 11em;
+  white-space: pre-wrap;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: whitesmoke;
+  background: linear-gradient(
+    to right,
+    rgb(97, 102, 97) 25px,
+    rgb(41, 42, 44) 20px
+  );
+}
+
+.gridButtonsTab3:hover {
+  background: linear-gradient(
+    to right,
+    rgb(221, 27, 27) 25px,
+    rgb(41, 42, 44) 20px
+  );
+}
+.gridButtonsTab4 {
+  border: none;
+  font-family: "Lora", serif;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+  cursor: pointer;
+  width: 23em;
+  white-space: pre-wrap;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: whitesmoke;
+  background: linear-gradient(
+    to right,
+    rgb(97, 102, 97) 25px,
+    rgb(41, 42, 44) 20px
+  );
+}
+
+.gridButtonsTab4:hover {
+  background: linear-gradient(
+    to right,
+    rgb(221, 27, 27) 25px,
+    rgb(41, 42, 44) 20px
+  );
+}
+
+.gridbtns {
+  display: none;
+}
+
+.line {
+  display: none;
+}
+
+/* LOGIN PAGE CSS */
+.loginContainer {
+  width: 30em;
+  height: 25em;
+  background-color: rgba(156, 154, 151, 0.699);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: transparent;
+  height: 80%;
+  width: 70%;
+}
+.userName,
+.passwd,
+.loginButton {
+  height: 20%;
+  width: 89%;
+  background-color: transparent;
+}
+#userName,
+#password {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(29, 27, 27) !important;
+  color: aliceblue;
+  border: 0px;
+  border-radius: 3px;
+  text-align: center;
+}
+#userName::placeholder,
+#password::placeholder {
+  color: rgb(250, 250, 250);
+  font-size: 15px;
+}
+#userName:focus,
+#password:focus {
+  outline-color: rgb(255, 255, 255);
+  outline: invert;
+}
+#loginButton {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(199, 41, 41);
+  border-radius: 3px;
+  border: 0.15em solid white;
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+}
+#loginButton:hover {
+  border: 0em;
+  -webkit-box-shadow: 0px 0px 5px 5px rgb(255, 0, 0);
+  -moz-box-shadow: 0px 0px 5px 5px rgb(255, 0, 0);
+  box-shadow: 0px 0px 5px 5px rgb(255, 0, 0);
+}
+#loginButton:active {
+  background-color: rgb(173, 66, 66);
+}
+
+/*Alert Popup*/
+.alertContainer {
+  width: 25em;
+  height: 15em;
+  background-color: rgb(41, 42, 44);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid rgb(255, 1, 1);
+  color: white;
+  animation-name: borderColorChange;
+  animation-duration: 700ms;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.alertContainer > h3 {
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.alertContainer > button {
+  color: rgb(228, 226, 226);
+  font-weight: 600;
+  width: 13em;
+  height: 3em;
+  background-color: rgb(97, 102, 97);
+  border-radius: 3px;
+  border: 0px;
+  cursor: pointer;
+}
+.alertContainer > button:active {
+  background-color: #fa0202;
+}
+
+.closeBtnLogin {
+  position: absolute;
+  top: 91%;
+  left: 95.5%;
+  background: none;
+  cursor: pointer;
+  border-style: none;
+  border-radius: 20%;
+}
+
+@keyframes colorChange {
+  0% {
+    border-color: #bbbab9;
+  }
+  100% {
+    border-color: #333e9b;
+  }
+}
+@keyframes borderColorChange {
+  0% {
+    border-color: #bbbab9;
+  }
+  100% {
+    border-color: #fa0202;
+  }
+}
+
+/* Logout Popup*/
+.logoutContainer {
+  width: 35em;
+  height: 15em;
+  background-color: rgb(41, 42, 44);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid rgb(255, 1, 1);
+  color: white;
+  animation-name: colorChange;
+  animation-duration: 700ms;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.question {
+  display: flex;
+  white-space: pre-wrap;
+  text-align: center;
+}
+.question > p {
+  font-size: x-large;
+}
+.logoutButtons {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.evetBtn,
+.hayırBtn {
+  color: rgb(228, 226, 226);
+  font-weight: 600;
+  width: 13em;
+  height: 3em;
+  background-color: rgba(100, 92, 92, 0.788);
+  border-radius: 3px;
+  border: 0px;
+  cursor: pointer;
+}
+.evetBtn {
+  border: 0.22em solid rgb(102, 255, 88);
+}
+.hayırBtn {
+  border: 0.22em solid rgb(252, 41, 41);
+}
+.hayırBtn:active {
+  background-color: rgb(167, 29, 29);
+}
+.evetBtn:active {
+  background-color: rgb(16, 150, 56);
+}
+
+/*Warning Popup*/
+.warningContainer {
+  width: 60em;
+  height: 17em;
+  background-color: rgb(41, 42, 44);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 2px solid rgb(255, 1, 1);
+  color: white;
+  animation-name: colorChange;
+  animation-duration: 700ms;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.question > img {
+  position: absolute;
+  right: 51em;
+  top: 1em;
+}
+
+/*Info Popup*/
+.infoContainer {
+  width: 60em;
+  height: 17em;
+  background-color: rgb(41, 42, 44);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid rgb(255, 1, 1);
+  color: white;
+  animation-name: colorChange;
+  animation-duration: 700ms;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.confirmation {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 3em;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.confirmation > img {
+  width: 10%;
+}
+.confirmation > p {
+  width: auto;
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: larger;
+}
+
+/*MEDIA QUERIES FOR GRID*/
+@media screen and (max-width: 1850px) {
+  .gridButtons {
+    width: 16em;
+  }
+}
+@media screen and (max-width: 1700px) {
+  .gridButtons {
+    width: 14.9em;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .gridButtons {
+    width: 13.5em;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .gridButtons {
+    width: 11.9em;
+  }
+}
+@media screen and (max-width: 1190px) {
+  .gridButtons {
+    width: 10.25em;
+  }
+}
+@media screen and (max-width: 1127px) {
+  .gridButtons {
+    width: 9em;
+  }
+}
+/*MEDIA QUERIES FOR GRIDTAB3*/
+
+@media screen and (max-width: 1807px) {
+  .gridButtonsTab3 {
+    width: 9.99em;
+  }
+}
+@media screen and (max-width: 1646px) {
+  .gridButtonsTab3 {
+    width: 9.09em;
+  }
+}
+@media screen and (max-width: 1502px) {
+  .gridButtonsTab3 {
+    width: 8.27em;
+  }
+}
+@media screen and (max-width: 1371px) {
+  .gridButtonsTab3 {
+    width: 7.52em;
+  }
+}
+@media screen and (max-width: 1251px) {
+  .gridButtonsTab3 {
+    width: 6.84em;
+  }
+}
+@media screen and (max-width: 1142px) {
+  .gridButtonsTab3 {
+    width: 6.22em;
+  }
+}
+@media screen and (max-width: 1043px) {
+  .gridButtonsTab3 {
+    width: 5.66em;
+  }
+}
+@media screen and (max-width: 1919px) {
+  hr {
+    display: none;
+  }
+}
+
+/*MEDIA QUERIES FOR TABS */
+@media screen and (max-width: 1366px) {
+  .activeTab {
+    font-size: large;
+  }
+}
+/*MEDIA QUERIES FOR CLOSE BUTTON */
+@media screen and (max-width: 1920px) {
+  .closeBtnLogin {
+    top: 92%;
+    left: 95.4%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .closeBtnLogin {
+    top: 90%;
+    left: 94%;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .closeBtnLogin {
+    top: 88%;
+    left: 93%;
+  }
+}
+@media screen and (width: 1280px) {
+  .closeBtnLogin {
+    top: 8%;
+    left: 93%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .closeBtnLogin {
+    top: 88%;
+    left: 91.2%;
+  }
+}
